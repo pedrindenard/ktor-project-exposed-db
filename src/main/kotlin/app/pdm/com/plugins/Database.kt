@@ -1,6 +1,7 @@
 package app.pdm.com.plugins
 
 import app.pdm.com.module.notes.models.NotesTable
+import app.pdm.com.module.users.models.UsersTable
 import io.ktor.server.application.*
 import io.ktor.server.config.*
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,7 @@ object Database {
 
         transaction(database) {
             SchemaUtils.create(NotesTable)
+            SchemaUtils.create(UsersTable)
         }
     }
 

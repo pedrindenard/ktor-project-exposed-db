@@ -1,10 +1,9 @@
-package app.pdm.com.module.users.models
+package app.pdm.com.module.login.models
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UsersReceive(
-    val username: String,
+data class LoginReceive(
     val email: String,
     val password: String
 )

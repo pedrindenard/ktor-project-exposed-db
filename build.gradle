@@ -49,4 +49,8 @@ dependencies {
 
     /* KTOR EXCEPTIONS SERVER */
     implementation "io.ktor:ktor-server-status-pages:$ktor_version"
+
+    /* KTOR JWT AUTHENTICATION */
+    implementation "io.ktor:ktor-server-auth:$ktor_version"
+    implementation "io.ktor:ktor-server-auth-jwt:$ktor_version"
 }

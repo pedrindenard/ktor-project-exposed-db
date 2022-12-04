@@ -1,6 +1,7 @@
 package app.pdm.com.module.users.models
 
 import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.lowerCase
 
 object UsersTable : Table() {
     val id = integer(name = "id").autoIncrement()

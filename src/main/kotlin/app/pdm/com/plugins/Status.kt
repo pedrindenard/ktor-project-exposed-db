@@ -7,7 +7,7 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import javax.naming.AuthenticationException
 
-object StatusPage {
+object Status {
 
     fun Application.configureStatusPages() {
         install(StatusPages) {

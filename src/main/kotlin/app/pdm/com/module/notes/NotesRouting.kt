@@ -23,7 +23,7 @@ object NotesRouting {
                         call.respond(response.code, response.message)
                     }
                     is BaseResponse.Failure -> {
-                        call.respond(response.code, response.throwable)
+                        call.respond(response.code, response.throwable.toString())
                     }
                     is BaseResponse.Success -> {
                         call.respond(response.code, response.data)
@@ -38,7 +38,7 @@ object NotesRouting {
                         call.respond(response.code, response.message)
                     }
                     is BaseResponse.Failure -> {
-                        call.respond(response.code, response.throwable)
+                        call.respond(response.code, response.throwable.toString())
                     }
                     is BaseResponse.Success -> {
                         call.respond(response.code, response.data)
@@ -53,7 +53,7 @@ object NotesRouting {
                         call.respond(response.code, response.message)
                     }
                     is BaseResponse.Failure -> {
-                        call.respond(response.code, response.throwable)
+                        call.respond(response.code, response.throwable.toString())
                     }
                     is BaseResponse.Success -> {
                         call.respond(response.code, response.data)
@@ -69,7 +69,7 @@ object NotesRouting {
                         call.respond(response.code, response.message)
                     }
                     is BaseResponse.Failure -> {
-                        call.respond(response.code, response.throwable)
+                        call.respond(response.code, response.throwable.toString())
                     }
                     is BaseResponse.Success -> {
                         call.respond(response.code, response.data)
@@ -84,7 +84,7 @@ object NotesRouting {
                         call.respond(response.code, response.message)
                     }
                     is BaseResponse.Failure -> {
-                        call.respond(response.code, response.throwable)
+                        call.respond(response.code, response.throwable.toString())
                     }
                     is BaseResponse.Success -> {
                         call.respond(response.code, response.data)

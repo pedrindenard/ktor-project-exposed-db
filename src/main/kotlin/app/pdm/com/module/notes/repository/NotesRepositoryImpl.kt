@@ -16,7 +16,7 @@ class NotesRepositoryImpl(private val dao: NotesDao) : NotesRepository {
         return if (note != null) {
             BaseResponse.Success(data = note, code = HttpStatusCode.OK)
         } else {
-            BaseResponse.Error(message = "Note not found.", code = HttpStatusCode.BadRequest)
+            BaseResponse.Error(message = "Note not found.", code = HttpStatusCode.NotFound)
         }
     }
 
@@ -24,7 +24,7 @@ class NotesRepositoryImpl(private val dao: NotesDao) : NotesRepository {
         val note = dao.addNote(title, description)
 
         return if (note != null) {
-            BaseResponse.Success(data = note, code = HttpStatusCode.OK)
+            BaseResponse.Success(data = note, code = HttpStatusCode.Created)
         } else {
             BaseResponse.Error(message = "Note not added.", code = HttpStatusCode.BadRequest)
         }
@@ -35,9 +35,9 @@ class NotesRepositoryImpl(private val dao: NotesDao) : NotesRepository {
         val note = dao.getNote(id)
 
         return if (noteAdded && note != null) {
-            BaseResponse.Success(data = note, code = HttpStatusCode.OK)
+            BaseResponse.Success(data = note, code = HttpStatusCode.Accepted)
         } else {
-            BaseResponse.Error(message = "Note not found.", code = HttpStatusCode.BadRequest)
+            BaseResponse.Error(message = "Note not found.", code = HttpStatusCode.NotFound)
         }
     }
 
@@ -47,7 +47,7 @@ class NotesRepositoryImpl(private val dao: NotesDao) : NotesRepository {
         return if (noteDeleted) {
             BaseResponse.Success(data = "Note deleted successfully.", code = HttpStatusCode.OK)
         } else {
-            BaseResponse.Error(message = "Note not found.", code = HttpStatusCode.BadRequest)
+            BaseResponse.Error(message = "Note not found.", code = HttpStatusCode.NotFound)
         }
     }
 }

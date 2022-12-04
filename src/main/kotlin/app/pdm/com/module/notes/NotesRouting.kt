@@ -1,6 +1,10 @@
 package app.pdm.com.module.notes
 
-import app.pdm.com.module.notes.dao.NotesDaoImpl.Companion.notesRepository
+import app.pdm.com.module.notes.dao.NotesDaoImpl.Companion.addNoteUseCase
+import app.pdm.com.module.notes.dao.NotesDaoImpl.Companion.deleteNoteUseCase
+import app.pdm.com.module.notes.dao.NotesDaoImpl.Companion.editNoteUseCase
+import app.pdm.com.module.notes.dao.NotesDaoImpl.Companion.getAllNotesUseCase
+import app.pdm.com.module.notes.dao.NotesDaoImpl.Companion.getNoteUseCase
 import app.pdm.com.module.notes.models.NotesReceive
 import app.pdm.com.module.server.models.BaseResponse
 import io.ktor.server.application.*
@@ -14,7 +18,7 @@ object NotesRouting {
         route(path = "/notes") {
 
             get(path = "/getAll") {
-                when (val response = notesRepository.getAllNotes()) {
+                when (val response = getAllNotesUseCase.invoke()) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -28,8 +32,8 @@ object NotesRouting {
             }
 
             get(path = "/{id}") {
-                val id = call.parameters["id"]!!.toInt()
-                when (val response = notesRepository.getNote(id)) {
+                val id = call.parameters["id"].toString()
+                when (val response = getNoteUseCase.invoke(id)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -44,7 +48,7 @@ object NotesRouting {
 
             post(path = "/add") {
                 val body = call.receive<NotesReceive>()
-                when (val response = notesRepository.addNote(body.title, body.description)) {
+                when (val response = addNoteUseCase.invoke(body)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -58,9 +62,9 @@ object NotesRouting {
             }
 
             post(path = "/edit/{id}") {
-                val id = call.parameters["id"]!!.toInt()
+                val id = call.parameters["id"].toString()
                 val body = call.receive<NotesReceive>()
-                when (val response = notesRepository.editNote(id, body.title, body.description)) {
+                when (val response = editNoteUseCase.invoke(id, body)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -74,8 +78,8 @@ object NotesRouting {
             }
 
             delete(path = "/delete/{id}") {
-                val id = call.parameters["id"]!!.toInt()
-                when (val response = notesRepository.deleteNote(id)) {
+                val id = call.parameters["id"].toString()
+                when (val response = deleteNoteUseCase.invoke(id)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }

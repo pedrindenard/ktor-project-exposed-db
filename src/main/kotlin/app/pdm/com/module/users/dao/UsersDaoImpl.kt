@@ -4,6 +4,10 @@ import app.pdm.com.module.users.models.UsersResponse
 import app.pdm.com.module.users.models.UsersTable
 import app.pdm.com.module.users.repository.UsersRepository
 import app.pdm.com.module.users.repository.UsersRepositoryImpl
+import app.pdm.com.module.users.use_case.AddUserUseCase
+import app.pdm.com.module.users.use_case.DeleteUserUserCase
+import app.pdm.com.module.users.use_case.EditUserUseCase
+import app.pdm.com.module.users.use_case.GetUserUseCase
 import app.pdm.com.plugins.Database.dbQuery
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -47,6 +51,10 @@ class UsersDaoImpl : UsersDao {
 
     companion object {
         private val usersDao: UsersDao = UsersDaoImpl()
-        val usersRepository: UsersRepository = UsersRepositoryImpl(usersDao)
+        private val usersRepository: UsersRepository = UsersRepositoryImpl(usersDao)
+        val addUserUseCase: AddUserUseCase = AddUserUseCase(usersRepository)
+        val editUserUseCase: EditUserUseCase = EditUserUseCase(usersRepository)
+        val getUserUseCase: GetUserUseCase = GetUserUseCase(usersRepository)
+        val deleteUserUseCase: DeleteUserUserCase = DeleteUserUserCase(usersRepository)
     }
 }

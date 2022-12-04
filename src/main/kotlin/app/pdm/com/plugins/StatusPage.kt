@@ -11,16 +11,8 @@ object StatusPage {
 
     fun Application.configureStatusPages() {
         install(StatusPages) {
-            status(HttpStatusCode.NotFound) { call, _ ->
-                call.respond(message = "Request does not match any route!", status = HttpStatusCode.NotFound)
-            }
-
             exception<AuthenticationException> { call, cause ->
                 call.respond(message = cause.message.toString(), status = HttpStatusCode.Unauthorized)
-            }
-
-            exception<NumberFormatException> { call, cause ->
-                call.respond(message = cause.message.toString(), status = HttpStatusCode.BadRequest)
             }
 
             exception<NullPointerException> { call, cause ->

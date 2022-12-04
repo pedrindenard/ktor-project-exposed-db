@@ -1,8 +1,11 @@
 package app.pdm.com.module.users
 
-import app.pdm.com.module.users.dao.UsersDaoImpl.Companion.usersRepository
-import app.pdm.com.module.users.models.UsersReceive
 import app.pdm.com.module.server.models.BaseResponse
+import app.pdm.com.module.users.dao.UsersDaoImpl.Companion.addUserUseCase
+import app.pdm.com.module.users.dao.UsersDaoImpl.Companion.deleteUserUseCase
+import app.pdm.com.module.users.dao.UsersDaoImpl.Companion.editUserUseCase
+import app.pdm.com.module.users.dao.UsersDaoImpl.Companion.getUserUseCase
+import app.pdm.com.module.users.models.UsersReceive
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
@@ -14,8 +17,8 @@ object UsersRouting {
         route(path = "/users") {
 
             get(path = "/{id}") {
-                val id = call.parameters["id"]!!.toInt()
-                when (val response = usersRepository.getUser(id)) {
+                val id = call.parameters["id"].toString()
+                when (val response = getUserUseCase.invoke(id)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -30,7 +33,7 @@ object UsersRouting {
 
             post(path = "/add") {
                 val body = call.receive<UsersReceive>()
-                when (val response = usersRepository.addUser(body.username, body.email, body.hashPassword())) {
+                when (val response = addUserUseCase.invoke(body)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -44,9 +47,9 @@ object UsersRouting {
             }
 
             post(path = "/edit/{id}") {
-                val id = call.parameters["id"]!!.toInt()
+                val id = call.parameters["id"].toString()
                 val body = call.receive<UsersReceive>()
-                when (val response = usersRepository.editUser(id, body.username, body.email, body.hashPassword())) {
+                when (val response = editUserUseCase.invoke(id, body)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }
@@ -60,8 +63,8 @@ object UsersRouting {
             }
 
             delete(path = "/delete/{id}") {
-                val id = call.parameters["id"]!!.toInt()
-                when (val response = usersRepository.deleteUser(id)) {
+                val id = call.parameters["id"].toString()
+                when (val response = deleteUserUseCase.invoke(id)) {
                     is BaseResponse.Error -> {
                         call.respond(response.code, response.message)
                     }

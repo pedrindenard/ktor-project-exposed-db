@@ -4,6 +4,7 @@ import app.pdm.com.module.notes.models.NotesResponse
 import app.pdm.com.module.notes.models.NotesTable
 import app.pdm.com.module.notes.repository.NotesRepository
 import app.pdm.com.module.notes.repository.NotesRepositoryImpl
+import app.pdm.com.module.notes.use_case.*
 import app.pdm.com.plugins.Database.dbQuery
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -45,6 +46,11 @@ class NotesDaoImpl : NotesDao {
 
     companion object {
         private val notesDao: NotesDao = NotesDaoImpl()
-        val notesRepository: NotesRepository = NotesRepositoryImpl(notesDao)
+        private val notesRepository: NotesRepository = NotesRepositoryImpl(notesDao)
+        val addNoteUseCase: AddNoteUseCase = AddNoteUseCase(notesRepository)
+        val editNoteUseCase: EditNoteUseCase = EditNoteUseCase(notesRepository)
+        val getNoteUseCase: GetNoteUseCase = GetNoteUseCase(notesRepository)
+        val getAllNotesUseCase: GetAllNoteUseCase = GetAllNoteUseCase(notesRepository)
+        val deleteNoteUseCase: DeleteNoteUserCase = DeleteNoteUserCase(notesRepository)
     }
 }

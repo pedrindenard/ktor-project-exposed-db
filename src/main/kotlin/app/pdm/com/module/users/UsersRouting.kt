@@ -2,7 +2,7 @@ package app.pdm.com.module.users
 
 import app.pdm.com.module.users.dao.UsersDaoImpl.Companion.usersRepository
 import app.pdm.com.module.users.models.UsersReceive
-import app.pdm.com.utils.BaseResponse
+import app.pdm.com.module.server.models.BaseResponse
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*

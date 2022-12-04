@@ -1,7 +1,7 @@
 package app.pdm.com.module.notes.repository
 
 import app.pdm.com.module.notes.dao.NotesDao
-import app.pdm.com.utils.BaseResponse
+import app.pdm.com.module.server.models.BaseResponse
 import io.ktor.http.*
 
 class NotesRepositoryImpl(private val dao: NotesDao) : NotesRepository {

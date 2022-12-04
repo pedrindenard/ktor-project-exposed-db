@@ -1,4 +1,4 @@
-package app.pdm.com.utils
+package app.pdm.com.module.server.models
 
 import io.ktor.http.*
 

@@ -1,6 +1,6 @@
 package app.pdm.com.module.users.repository
 
-import app.pdm.com.utils.BaseResponse
+import app.pdm.com.module.server.models.BaseResponse
 
 interface UsersRepository {
 

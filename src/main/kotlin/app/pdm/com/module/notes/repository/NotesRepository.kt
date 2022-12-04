@@ -1,6 +1,6 @@
 package app.pdm.com.module.notes.repository
 
-import app.pdm.com.utils.BaseResponse
+import app.pdm.com.module.server.models.BaseResponse
 
 interface NotesRepository {
 

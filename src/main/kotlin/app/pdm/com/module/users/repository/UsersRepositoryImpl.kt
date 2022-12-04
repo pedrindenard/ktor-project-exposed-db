@@ -1,7 +1,7 @@
 package app.pdm.com.module.users.repository
 
 import app.pdm.com.module.users.dao.UsersDao
-import app.pdm.com.utils.BaseResponse
+import app.pdm.com.module.server.models.BaseResponse
 import io.ktor.http.*
 
 class UsersRepositoryImpl(private val dao: UsersDao) : UsersRepository {

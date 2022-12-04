@@ -21,7 +21,7 @@ class UsersDaoImpl : UsersDao {
     }
 
     override suspend fun getUserByEmail(email: String): UsersResponse? = dbQuery {
-        UsersTable.select { UsersTable.email eq email }.map(::resultRowToUsers).singleOrNull()
+        UsersTable.select { UsersTable.email eq email }.map(::resultRowToUsers).firstOrNull()
     }
 
     override suspend fun addUser(username: String, email: String, password: String): UsersResponse? = dbQuery {

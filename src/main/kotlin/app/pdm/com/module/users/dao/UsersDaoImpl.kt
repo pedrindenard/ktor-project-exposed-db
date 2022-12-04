@@ -2,6 +2,8 @@ package app.pdm.com.module.users.dao
 
 import app.pdm.com.module.users.models.UsersResponse
 import app.pdm.com.module.users.models.UsersTable
+import app.pdm.com.module.users.repository.UsersRepository
+import app.pdm.com.module.users.repository.UsersRepositoryImpl
 import app.pdm.com.plugins.Database.dbQuery
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -16,6 +18,10 @@ class UsersDaoImpl : UsersDao {
 
     override suspend fun getUser(id: Int): UsersResponse? = dbQuery {
         UsersTable.select { UsersTable.id eq id }.map(::resultRowToUsers).singleOrNull()
+    }
+
+    override suspend fun getUserByEmail(email: String): UsersResponse? = dbQuery {
+        UsersTable.select { UsersTable.email eq email }.map(::resultRowToUsers).singleOrNull()
     }
 
     override suspend fun addUser(username: String, email: String, password: String): UsersResponse? = dbQuery {
@@ -40,6 +46,7 @@ class UsersDaoImpl : UsersDao {
     }
 
     companion object {
-        val usersDao: UsersDao = UsersDaoImpl()
+        private val usersDao: UsersDao = UsersDaoImpl()
+        val usersRepository: UsersRepository = UsersRepositoryImpl(usersDao)
     }
 }

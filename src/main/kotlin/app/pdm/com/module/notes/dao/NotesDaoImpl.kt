@@ -2,6 +2,8 @@ package app.pdm.com.module.notes.dao
 
 import app.pdm.com.module.notes.models.NotesResponse
 import app.pdm.com.module.notes.models.NotesTable
+import app.pdm.com.module.notes.repository.NotesRepository
+import app.pdm.com.module.notes.repository.NotesRepositoryImpl
 import app.pdm.com.plugins.Database.dbQuery
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -42,6 +44,7 @@ class NotesDaoImpl : NotesDao {
     }
 
     companion object {
-        val notesDao: NotesDao = NotesDaoImpl()
+        private val notesDao: NotesDao = NotesDaoImpl()
+        val notesRepository: NotesRepository = NotesRepositoryImpl(notesDao)
     }
 }

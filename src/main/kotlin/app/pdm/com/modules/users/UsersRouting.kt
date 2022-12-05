@@ -1,10 +1,10 @@
 package app.pdm.com.modules.users
 
 import app.pdm.com.modules.server.models.BaseResponse
-import app.pdm.com.modules.users.dao.UsersDaoImpl.Companion.addUserUseCase
-import app.pdm.com.modules.users.dao.UsersDaoImpl.Companion.deleteUserUseCase
-import app.pdm.com.modules.users.dao.UsersDaoImpl.Companion.editUserUseCase
-import app.pdm.com.modules.users.dao.UsersDaoImpl.Companion.getUserUseCase
+import app.pdm.com.core.Injection.addUserUseCase
+import app.pdm.com.core.Injection.deleteUserUseCase
+import app.pdm.com.core.Injection.editUserUseCase
+import app.pdm.com.core.Injection.getUserUseCase
 import app.pdm.com.modules.users.models.UsersReceive
 import io.ktor.server.application.*
 import io.ktor.server.auth.*

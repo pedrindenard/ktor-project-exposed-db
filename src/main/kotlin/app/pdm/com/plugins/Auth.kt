@@ -5,7 +5,6 @@ import app.pdm.com.utils.Utils.verifyJWTToken
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*
-import io.ktor.server.config.*
 
 object Auth {
 

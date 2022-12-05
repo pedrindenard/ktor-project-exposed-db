@@ -2,7 +2,7 @@ package app.pdm.com.modules.users.models
 
 import org.jetbrains.exposed.sql.Table
 
-object UsersTable : Table() {
+object UsersEntity : Table() {
     val id = integer(name = "id").autoIncrement()
     val username = varchar(name = "username", length = 128)
     val email = varchar(name = "email", length = 128)

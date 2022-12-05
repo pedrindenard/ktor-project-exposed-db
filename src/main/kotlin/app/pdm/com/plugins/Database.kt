@@ -1,7 +1,7 @@
 package app.pdm.com.plugins
 
-import app.pdm.com.modules.notes.models.NotesTable
-import app.pdm.com.modules.users.models.UsersTable
+import app.pdm.com.modules.notes.models.NotesEntity
+import app.pdm.com.modules.users.models.UsersEntity
 import app.pdm.com.utils.Environment
 import io.ktor.server.application.*
 import kotlinx.coroutines.Dispatchers
@@ -17,8 +17,8 @@ object Database {
         val database = Database.connect(Environment.jdbcURL, Environment.driverClassName)
 
         transaction(database) {
-            SchemaUtils.create(NotesTable)
-            SchemaUtils.create(UsersTable)
+            SchemaUtils.create(NotesEntity)
+            SchemaUtils.create(UsersEntity)
         }
     }
 

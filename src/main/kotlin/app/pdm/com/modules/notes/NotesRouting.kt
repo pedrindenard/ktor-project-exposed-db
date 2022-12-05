@@ -1,10 +1,10 @@
 package app.pdm.com.modules.notes
 
-import app.pdm.com.modules.notes.dao.NotesDaoImpl.Companion.addNoteUseCase
-import app.pdm.com.modules.notes.dao.NotesDaoImpl.Companion.deleteNoteUseCase
-import app.pdm.com.modules.notes.dao.NotesDaoImpl.Companion.editNoteUseCase
-import app.pdm.com.modules.notes.dao.NotesDaoImpl.Companion.getAllNotesUseCase
-import app.pdm.com.modules.notes.dao.NotesDaoImpl.Companion.getNoteUseCase
+import app.pdm.com.core.Injection.addNoteUseCase
+import app.pdm.com.core.Injection.deleteNoteUseCase
+import app.pdm.com.core.Injection.editNoteUseCase
+import app.pdm.com.core.Injection.getAllNotesUseCase
+import app.pdm.com.core.Injection.getNoteUseCase
 import app.pdm.com.modules.notes.models.NotesReceive
 import app.pdm.com.modules.server.models.BaseResponse
 import io.ktor.server.application.*

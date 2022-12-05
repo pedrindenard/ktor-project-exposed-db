@@ -58,14 +58,6 @@ object Utils {
             .build()
     }
 
-    fun JWTPrincipal.getUserFromBearerToken(): UsersResponse {
-        return UsersResponse(
-            id = payload.getClaim("id").asInt() ?: -1,
-            username = payload.getClaim("username").asString() ?: "",
-            email = payload.getClaim("email").asString() ?: ""
-        )
-    }
-
     val JWTPrincipal.getIdFromBearerToken: Int
         get() = payload.getClaim("id").asInt() ?: -1
 }

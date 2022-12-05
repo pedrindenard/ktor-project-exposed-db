@@ -1,7 +1,7 @@
 package app.pdm.com.plugins
 
-import app.pdm.com.module.notes.models.NotesTable
-import app.pdm.com.module.users.models.UsersTable
+import app.pdm.com.modules.notes.models.NotesTable
+import app.pdm.com.modules.users.models.UsersTable
 import app.pdm.com.utils.Environment
 import io.ktor.server.application.*
 import kotlinx.coroutines.Dispatchers

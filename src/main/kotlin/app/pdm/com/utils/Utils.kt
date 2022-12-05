@@ -1,7 +1,7 @@
 package app.pdm.com.utils
 
-import app.pdm.com.module.login.models.LoginToken
-import app.pdm.com.module.users.models.UsersResponse
+import app.pdm.com.modules.login.models.LoginToken
+import app.pdm.com.modules.users.models.UsersResponse
 import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier
 import com.auth0.jwt.algorithms.Algorithm
@@ -65,4 +65,7 @@ object Utils {
             email = payload.getClaim("email").asString() ?: ""
         )
     }
+
+    val JWTPrincipal.getIdFromBearerToken: Int
+        get() = payload.getClaim("id").asInt() ?: -1
 }

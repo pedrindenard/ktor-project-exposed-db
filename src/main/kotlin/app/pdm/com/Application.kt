@@ -1,9 +1,9 @@
 package app.pdm.com
 
-import app.pdm.com.module.login.LoginRouting.configureLoginRouting
-import app.pdm.com.module.notes.NotesRouting.configureNoteRouting
-import app.pdm.com.module.server.ServerRouting.configureServerRouting
-import app.pdm.com.module.users.UsersRouting.configureUserRouting
+import app.pdm.com.modules.login.LoginRouting.configureLoginRouting
+import app.pdm.com.modules.notes.NotesRouting.configureNoteRouting
+import app.pdm.com.modules.server.ServerRouting.configureServerRouting
+import app.pdm.com.modules.users.UsersRouting.configureUserRouting
 import app.pdm.com.plugins.Auth.configureAuthentication
 import app.pdm.com.plugins.Database.configureDatabase
 import app.pdm.com.plugins.Serializable.configureSerializable
